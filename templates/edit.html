@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Buku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Edit Buku</h1>
+        
+        <form method="POST">
+            <label>Judul Buku:</label>
+            <input type="text" name="judul" value="{{ book['judul'] }}" required>
+            
+            <label>Penulis:</label>
+            <input type="text" name="penulis" value="{{ book['penulis'] }}" required>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ url_for('index') }}" class="btn">Batal</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

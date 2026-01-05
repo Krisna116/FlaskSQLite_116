@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Buku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Daftar Buku</h1>
+        <a href="{{ url_for('add') }}" class="btn btn-primary">Tambah Buku</a>
+        
+        <div class="card-list">
+            {% for book in books %}
+            <div class="card">
+                <h3>{{ book['judul'] }}</h3>
+                <p>Penulis: {{ book['penulis'] }}</p>
+                <div class="card-actions">
+                    <a href="{{ url_for('edit', id=book['id']) }}" class="btn">Edit</a>
+                    <a href="{{ url_for('delete', id=book['id']) }}" class="btn btn-danger" 
+                       onclick="return confirm('Yakin ingin menghapus buku ini?')">Hapus</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if not books %}
+        <p class="empty">Belum ada buku. Silakan tambahkan buku baru!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
